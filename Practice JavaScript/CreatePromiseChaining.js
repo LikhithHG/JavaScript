@@ -25,6 +25,7 @@ createOrder(cart) //Returns orderID
 })
 .catch(function (err) {
     //catch only proceeds with the error for the promises that are above it
+    //This catch will catch all the errors of the promises that it sees above it bug not  for the promises that are below it
     //This make sures that the promise chain continues if one promise fails also
     console.log(err.message);
 }) //Used to handale if the promise is rejected or handle failure cases
@@ -34,6 +35,9 @@ createOrder(cart) //Returns orderID
 .then(function(paymentInfo){
     console.log(paymentInfo);
 })
+.catch(function (err){
+    console.log(err.message);
+});
 
 
 
@@ -51,11 +55,12 @@ function createOrder(cart)
             const err = new Error("cart is not valid");
             reject(err);
         }
-        //Logic for create order
+        //Logic for create order goes here
+        //But here just for the understanding purpose hardcoded
         const orderId = '1234'; //Using DB calls
         if(orderId)
         {
-            //Just to mimic the action of the promise writing set timeout
+            //Just to mimic the action of the promise to take long time we are writing set timeout
             setTimeout(function() {
                 resolve(orderId);
             }, 5000);
@@ -76,11 +81,18 @@ function validateCart(cart)
 function proceedToPayment(orderId)
 {
     //Logic to proceed to payment here
+    
+    //orderId = null;
+    //Just to mimic the action reject a promise and catching this error the above statement is used
 
-    //You can write the logic for reject as like the create order function and work accordingly 
+    //You can write the logic for reject as like the createOrder function and work accordingly 
     //here just for understanding purpose we are directly resolving it
     return new Promise(function(resolve, reject){
+    
+        if(orderId)
+            resolve("payment Successfull for the order with ID "+orderId);
         
-        resolve("payment Successfull");
+        else    
+            reject(new Error("No valid payment Info available"));
     })
 }

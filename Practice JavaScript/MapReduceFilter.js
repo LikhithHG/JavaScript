@@ -26,7 +26,7 @@ function even(value)
     return value % 2 === 0;
 }
 
-const output1 = arr1.filter(odd);
+const output1 = arr.filter(odd);
 console.log(output);
 console.log(arr.filter(even));
 

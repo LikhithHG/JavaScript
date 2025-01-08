@@ -17,7 +17,7 @@ const p2 = new Promise((resolve, reject) => {
 /*
 function getData()
 {
-    //JS engine will not wait for promise to be resolved it moves on to print "Namaste JS"
+    //JS engine will not wait for promise to be resolved it moves on to print "Namaste JS" first
     p.then((res) => console.log(res));
     console.log("Namaste JS");
 }
@@ -25,7 +25,7 @@ function getData()
 getData();
 */
 //After Async await
-//await only used in a async function
+//await is only used inside a async function
 
 async function handlePromise() {
     console.log("Hello JS"); // This will be executed soon
@@ -40,7 +40,7 @@ async function handlePromise() {
 }
 handlePromise();
 
-//If there are two values for same promise then the first one will wait until promise is resolved but second will be executed soon
-//If there are two values for two different promises then the first one will wait until promise is resolved and second one depends on the time of the second promise
+//If there are two values for same promise then the first one will wait until promise is resolved but second will be executed soon since the promise is already resolved or rejected
+//If there are two values for two different promises then the first one will wait until promise is resolved and second one depends on the time of execution of the second promise
 //In both the above scenerio JS Engine appears to be waiting but its not actually.
 //The async will be suspended until the await is resolsolved and call stack will not be blocked
