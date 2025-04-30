@@ -25,7 +25,7 @@ createOrder(cart) //Returns orderID
 })
 .catch(function (err) {
     //catch only proceeds with the error for the promises that are above it
-    //This catch will catch all the errors of the promises that it sees above it bug not  for the promises that are below it
+    //This catch will catch all the errors of the promises that it sees above it but not  for the promises that are below it
     //This make sures that the promise chain continues if one promise fails also
     console.log(err.message);
 }) //Used to handale if the promise is rejected or handle failure cases
